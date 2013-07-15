@@ -12,15 +12,24 @@
 	<name>futureapp-web</name>
 	<packaging>war</packaging>
 	<dependencies>
-		
+
 		<!-- Dependency required for JSP JSTL :START -->
-	    <dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
 		<!-- Dependency required for JSP JSTL :END -->
 		
+		<!-- Dependency required for Servlet-API - Provided by container at runtime :START -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Dependency required for Servlet-API - Provided by container at runtime :END -->
+
 		<!-- Dependency required for Spring Framework :START -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -50,19 +59,19 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.8.4</version>
 		</dependency>
-		<!-- Dependency required for JSON - AJAX - End -->			    
-	    
+		<!-- Dependency required for JSON - AJAX - End -->
+
 		<!-- Project Modules - Dependency :START -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>futureapp-base</artifactId>
 			<version>1.0.0</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>futureapp-model</artifactId>
 			<version>1.0.0</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>futureapp-dao</artifactId>
@@ -72,10 +81,20 @@
 			<groupId>${project.groupId}</groupId>
 			<artifactId>futureapp-service</artifactId>
 			<version>1.0.0</version>
-		</dependency>		
+		</dependency>
 		<!-- Project Modules - Dependency :END -->
 	</dependencies>
+
 	<build>
 		<finalName>futureapp-web</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webXml>WebContent\WEB-INF\web.xml</webXml>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>

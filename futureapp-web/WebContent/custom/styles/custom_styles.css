@@ -1,0 +1,20 @@
+/**
+ * Custom CSS definition 
+ * 
+ * @author salil
+ * @version 1.0.0
+ */
+ 
+table.fullBorder,
+table.fullBorder td, 
+table.fullBorder th
+{
+	border-color: black;
+	border-style: solid;
+	border-width: 1px 1px 1px 1px;
+}
+
+table th.centerAlign, 
+table td.centerAlign {
+	text-align: center;
+}

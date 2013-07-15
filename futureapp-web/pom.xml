@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.salil.futureapp</groupId>
+		<artifactId>futureapp-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>futureapp-web</artifactId>
+	<name>futureapp-web</name>
+	<packaging>war</packaging>
+	<dependencies>
+		
+		<!-- Dependency required for JSP JSTL :START -->
+	    <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- Dependency required for JSP JSTL :END -->
+		
+		<!-- Dependency required for Spring Framework :START -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- Dependency required for Spring Framework :END -->
+
+		<!-- Dependency required for JSON - AJAX - Start -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.8.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-lgpl</artifactId>
+			<version>1.8.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.8.4</version>
+		</dependency>
+		<!-- Dependency required for JSON - AJAX - End -->			    
+	    
+		<!-- Project Modules - Dependency :START -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>futureapp-base</artifactId>
+			<version>1.0.0</version>
+		</dependency>		
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>futureapp-model</artifactId>
+			<version>1.0.0</version>
+		</dependency>		
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>futureapp-dao</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>futureapp-service</artifactId>
+			<version>1.0.0</version>
+		</dependency>		
+		<!-- Project Modules - Dependency :END -->
+	</dependencies>
+	<build>
+		<finalName>futureapp-web</finalName>
+	</build>
+</project>

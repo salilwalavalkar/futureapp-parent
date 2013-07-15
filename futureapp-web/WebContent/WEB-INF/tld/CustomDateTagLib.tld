@@ -1,0 +1,35 @@
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-
+jsptaglibrary_2_0.xsd"
+	version="2.0">
+	<uri>/WEB-INF/tld/CustomDateTagLib.tld</uri>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<tag>
+		<name>fmtDate</name>
+		<tagclass>com.salil.futureapp.web.common.CustomDateTagHandler</tagclass>
+		<info></info>
+		<description>Custom tag library for formating date string.
+			#CUSTOMTAGLIBRARY</description>
+		<attribute>
+			<name>input</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>javaTimeZone</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>pattern</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>timeZoneDesc</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

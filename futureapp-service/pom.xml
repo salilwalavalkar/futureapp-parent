@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.salil.futureapp</groupId>
+		<artifactId>futureapp-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>futureapp-service</artifactId>
+	<name>futureapp-service</name>
+	<description>Service Module</description>
+	<packaging>jar</packaging>
+	
+	<dependencies>
+		<!-- Project Modules - Dependency :START -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>futureapp-base</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>futureapp-model</artifactId>
+			<version>1.0.0</version>
+		</dependency>		
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>futureapp-dao</artifactId>
+			<version>1.0.0</version>
+		</dependency>		
+		<!-- Project Modules - Dependency :END -->
+	</dependencies>
+		
+</project>

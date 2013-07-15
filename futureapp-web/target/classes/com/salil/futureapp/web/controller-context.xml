@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- #SPRING -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!--
+		# MVC annotation driven - Explaination 	
+		Configures support for Spring MVC features such as declarative validation with @Valid, 
+		HTTP message conversion with @RequestBody/@ResponseBody. Support for reading 
+		and writing JSON, if Jackson is present on the classpath
+		
+		Tag added in Spring 3.0 which does the following:
+		1. Configures the Spring 3 Type ConversionService (alternative to PropertyEditors)
+		2. Adds support for formatting Number fields with @NumberFormat
+		3. Adds support for formatting Date, Calendar, and Joda Time fields with @DateTimeFormat, if Joda Time is on the classpath
+		4. Adds support for validating @Controller inputs with @Valid, if a JSR-303 Provider is on the classpath
+		5. Adds support for support for reading and writing XML, if JAXB is on the classpath (HTTP message conversion with @RequestBody/@ResponseBody)
+		6. Adds support for reading and writing JSON, if Jackson is o n the classpath (along the same lines as #5)
+				
+	 -->
+	<!-- <mvc:annotation-driven/> -->
+	
+	<!-- 
+		# Context component scan - Explaination
+		<context:component-scan/> logically extends <context:annotation-config/> with CLASSPATH component scanning and Java @Configuration features. 
+		So basically <context:component-scan/> recognizes a superset of annotations recognized by <context:annotation-config/> 
+		@Component, @Service, @Repository, @Controller, @Endpoint
+    	@Configuration, @Bean, @Lazy, @Scope, @Order, @Primary, @Profile, @DependsOn, @Import, @ImportResource
+		
+		<context:annotation-config> is used to activate annotations in beans already registered in the application context 
+		(no matter if they were defined with XML or by package scanning).
+
+		<context:component-scan> can also do what <context:annotation-config> does but <context:component-scan> also scans packages 
+		to find and register beans within the application context.		
+		
+	 -->
+	<!-- Adding component scan - Start -->
+	<context:component-scan base-package="com.salil.futureapp.web.controller" />
+	<!-- Adding component scan - End -->
+	
+	<!-- Controller Classes - Start -->
+	
+	<!-- Note: Ideally this controller class need not be defined because we have already stated component scan above. 
+	However since we need to inject dependency of non autowired service class, we need to define the controller 
+	defination and inject service class -->
+	<bean id="testController" class="com.salil.futureapp.web.controller.TestController">
+		<property name="nonAutoWRService" ref="INonAutoWRService"/>	    
+	</bean>
+	<!-- Controller Classes - End -->
+	
+	<!-- Redirecting any errors to common exception handler page #EXCEPTIONHANDLER   -->
+	<bean class="com.salil.futureapp.web.common.CustomExceptionHandler">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">exception/customExceptionPage</prop>
+			</props>
+		</property>
+	</bean>	
+	
+	<!-- 
+		Simple implementation of ViewResolver that interprets a view name as 
+		bean name in the current application context, i.e. in the XML file 
+		of the executing DispatcherServlet 
+	-->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+ 	
+	<!-- Spring - AspectJ - Logging Start -->
+	<!-- Enable the @AspectJ support #ASPECT -->
+	<aop:aspectj-autoproxy proxy-target-class="false"/>
+	<bean id="customLoggingAspect" class="com.salil.futureapp.base.aspect.CustomLoggingAspect"/>
+ 	<!-- Spring - AspectJ - Logging End -->		
+</beans>

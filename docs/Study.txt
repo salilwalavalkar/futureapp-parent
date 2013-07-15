@@ -1,0 +1,50 @@
+-------------------------------------
+Hibernate Persistence
+-------------------------------------	
+session.save(): 
+Save does an insert and will fail if the primary key is already exists. It returns an identifier, and if an INSERT has to be executed to get the identifier (e.g. "identity" generator, not "sequence"), this INSERT happens immediately, no matter if you are inside or outside of a transaction
+
+session.persist():
+Does the same like session.save(). But session.save() return Serializable object (Id) but session.persist() return void. session.save() returns the 
+generated identifier (Serializable object) and session.persist() doesn't. It makes a transient instance persistent. However, it doesn't guarantee that the identifier value will be assigned to the persistent instance immediately, the assignment might happen at flush time. The spec doesn't say that. It also guarantees that it will not execute an INSERT statement if it is called outside of transaction boundaries.
+
+session.update():
+Attempts to persist the entity using an existing identifier. If no identifier exists, an exception is thrown.
+
+session.saveOrUpdate():
+It does a select first to determine if it needs to do an insert or an update. Insert data if primary key not exist otherwise update data. E.g. if no identifier exists, save is called. Otherwise update is called.
+
+-----------------------
+HTML DOC Type
+-----------------------
+According to HTML standards, each HTML document requires a document type declaration. The "DOCTYPE" begins the HTML document and tells a validator which version of HTML to use in checking the document's syntax.
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+This declares the document to be HTML 4.01 Strict. HTML 4.01 Strict is a trimmed down version of HTML 4.01 that emphasizes structure over presentation. Deprecated elements and attributes (including most presentational attributes), frames, and link targets are not allowed in HTML 4 Strict. By writing to HTML 4 Strict, authors can achieve accessible, structurally rich documents that easily adapt to style sheets and different browsing situations. However, HTML 4 Strict documents may look bland on very old browsers that lack support for style sheets
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+This declares the document to be HTML 4.01 Transitional. HTML 4 Transitional includes all elements and attributes of HTML 4 Strict but adds presentational attributes, deprecated elements, and link targets.
+
+-----------------------
+Deprecated in HTML 4
+-----------------------
+A number of elements and attributes are deprecated in HTML 4 as an indication that other methods of accomplishing the same task are preferred. Deprecated features may become obsolete in future versions of HTML, though browsers that support the features will likely continue to support them. Deprecated features are included in HTML 4 Transitional and HTML 4 Frameset but not HTML 4 Strict. 
+
+The following elements are deprecated in favor of style sheets:
+    BASEFONT - Base font change
+    CENTER - Centered block
+    FONT - Font change
+    S - Strike-through text
+    STRIKE - Strike-through text
+    U - Underlined text
+
+The following elements are also deprecated:
+    APPLET - Java applet (deprecated in favor of OBJECT)
+    DIR - Directory list (deprecated in favor of UL)
+    ISINDEX - Input prompt (deprecated in favor of INPUT)
+    MENU - Menu list (deprecated in favor of UL)
+

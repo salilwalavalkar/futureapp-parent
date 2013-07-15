@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<display-name>FutureWebApp</display-name>
+
+	<context-param>
+		<param-name>registerName</param-name>
+		<param-value>future-web</param-value>
+	</context-param>
+
+	<!-- Context Listener - Startup / Shutdown #CONTEXTLISTENER -->
+	<listener>
+		<listener-class>com.salil.futureapp.web.common.CustomContextListener</listener-class>
+	</listener>
+	<!-- Context Listener - Startup / Shutdown -->
+
+
+	<!-- Context Mapping - Start -->
+	<servlet>
+		<servlet-name>futureViewController</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>WEB-INF/customApplicationContext.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>futureViewController</servlet-name>
+		<url-pattern>/future/*</url-pattern>
+	</servlet-mapping>
+	<!-- Context Mapping - End -->
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>
